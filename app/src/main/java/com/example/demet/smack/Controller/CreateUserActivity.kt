@@ -1,9 +1,11 @@
-package com.example.demet.smack
+package com.example.demet.smack.Controller
 
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.demet.smack.R
+import com.example.demet.smack.Services.AuthService
 import kotlinx.android.synthetic.main.activity_create_user.*
 import java.util.*
 
@@ -21,9 +23,9 @@ class CreateUserActivity : AppCompatActivity() {
         val color = random.nextInt(2)
         val avatar = random.nextInt(28)
         if(color == 0){
-            userAvatar = "Light$avatar"
+            userAvatar = "light$avatar"
         }else{
-            userAvatar = "Dark$avatar"
+            userAvatar = "dark$avatar"
         }
         val resourceId = resources.getIdentifier(userAvatar, "drawable", packageName)
         createAvatarImageView.setImageResource(resourceId)
@@ -43,6 +45,10 @@ class CreateUserActivity : AppCompatActivity() {
         avatarColor = "[$savedR, $savedG, $savedB, 1]"
     }
     fun createUserBtnClicked(view: View){
+        AuthService.registerUser(this, "gambe@gmail.com", "abcd"){complete ->
+            if(complete){
 
+            }
+        }
     }
 }
